@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f5ff;
+            /* Light blue background */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            /* Set flex direction to column to align items vertically */
+            flex-direction: column;
+            align-items: flex-start;
+            height: 100vh;
+        }
+
+        #quizContainer {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 800px;
+            text-align: center;
+            /* Add margin to separate the quiz container from the pillar navigation */
+            margin-left: 20px;
+        }
+
+        .pillar-container {
+            /* Add styling to the container for side navigation */
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .pillar {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            /* Set cursor to pointer for a clickable appearance */
+            cursor: pointer;
+            /* Add hover effect to highlight on hover */
+            transition: background-color 0.3s;
+        }
+
+        .pillar:hover {
+            background-color: #d0d0d0;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #007BFF;
+            /* Blue button color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            background-color: #3950aa;
+            /* Disable button color */
+            cursor: not-allowed;
+        }
+        .question-indicator {
+            font-weight: bold;
+            margin-left: 10px;
+            box-shadow: 0px 0px 4.6px rgba(0,0,0,0.5);
+    padding: 6px 7px;
+    background:linear-gradient(284.04deg, #200E3D 0%, #60166C 25.33%, #4E2A8C 52.07%, #1A0B32 100%);
+    border-radius: 10px;
+    font-size: 17px;
+    color: #fff;
+        }
+    </style>
+</head>
+
+  <body>
+    <div class="pillar-container">
+      <div class="pillar" onclick="jumpToPillar(1)">
+        Operational Exellence <span class="question-indicator" id="questionIndicator1"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(2)">
+        Security<span class="question-indicator" id="questionIndicator2"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(3)">
+        Sustainability<span class="question-indicator" id="questionIndicator3"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(4)">
+        Cost Optmization<span class="question-indicator" id="questionIndicator4"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(5)">
+        Realiability<span class="question-indicator" id="questionIndicator5"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(6)">
+        Performance Efficiency<span class="question-indicator" id="questionIndicator6"
+          >0</span
+        >
+      </div>
+      <!-- Repeat for other pillars -->
+    </div>
+
+    <!-- Pillar container for side navigation -->
+    <!-- <div class="pillar-container">
+ <div class="pillar" onclick="jumpToPillar(1)">Pillar 1</div>
+ <div class="pillar" onclick="jumpToPillar(2)">Pillar 2</div>
+ <div class="pillar" onclick="jumpToPillar(3)">Pillar 3</div>
+ <div class="pillar" onclick="jumpToPillar(4)">Pillar 4</div>
+ <div class="pillar" onclick="jumpToPillar(5)">Pillar 5</div>
+ <div class="pillar" onclick="jumpToPillar(6)">Pillar 6</div>
+ </div> -->
+
+    <!-- Quiz container -->
+    <div id="quizContainer">
+      <!-- Pillar 1 -->
+      <div class="pillar" id="pillar1">
+        <h2>Pillar 1 : Operational Exellence</h2>
+        <div class="question" id="pillar1_q1">
+          <h3>How do you evaluate internal & external customer needs?</h3>
+          <button onclick="showOptions('pillar1_q1')">Choose One</button>
+          <select
+            name="pillar1_q1"
+            id="pillar1_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q1','1',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Stakeholders meetings</option>
+            <option value="2">Workshops & documentation</option>
+            <option value="3">user-centered design</option>
+            <option value="4">SLOs & KPIs</option>
+            <option value="5">Value stream mapping & feedback loops.</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar1_q2">
+          <h3>How does your organizational culture support your business outcomes?</h3>
+          <button onclick="showOptions('pillar1_q2')">Choose One</button>
+          <select
+            name="pillar1_q2"
+            id="pillar1_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q2','1',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Minimal Support</option>
+            <option value="2">Support Awareness</option>
+            <option value="3">Collaborative Culture</option>
+            <option value="4">Empowered Teams</option>
+            <option value="5">Continuous improvement Culture </option>
+          </select>
+        </div>
+        <div class="question" id="pillar1_q3">
+          <h3>Do Resources, Processes and procedures have identified owners?</h3>
+          <button onclick="showOptions('pillar1_q3')">Choose One</button>
+          <select
+            name="pillar1_q3"
+            id="pillar1_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q3','1',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">ad hoc ownership</option>
+            <option value="2">Resource ownership</option>
+            <option value="3">ownership Registry & Accountability</option>
+            <option value="4">Business-value driven ownership</option>
+            <option value="5">Continuous improvement ownership</option>
+          </select>
+        </div>
+        <div class="question" id="pillar1_q4">
+          <h3>How do you design your workload so that you can understand its state?</h3>
+          <button onclick="showOptions('pillar1_q4')">Choose One</button>
+          <select
+            name="pillar1_q4"
+            id="pillar1_q4_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q4','1',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Limited Monitoring</option>
+            <option value="2">Basic Metrics and Logging</option>
+            <option value="3">Metrics, Logs, and Tracing</option>
+            <option value="4">Real-time Monitoring and Alerts</option>
+            <option value="5">AI/ML-Powered Observability</option>
+          </select>
+        </div>
+        <div class="question" id="pillar1_q5">
+          <h3>How do you reduce defects, ease remediation, and improve flow into production?</h3>
+          <button onclick="showOptions('pillar1_q5')">Choose One</button>
+          <select
+            name="pillar1_q5"
+            id="pillar1_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q5','1',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Limited Quality Assurance</option>
+            <option value="2">Basic Quality Checks</option>
+            <option value="3">Continuous Integration</option>
+            <option value="4">Continuous Delivery</option>
+            <option value="5">Continuous Improvement and DevSecOps</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar1_indicator" style="font-size: 25px;font-weight: 700;">0</span><span style="font-size: 25px;font-weight: 700;">/5</span>
+        </div>
+      </div>
+
+
+
+      <!-- Pillar 2 -->
+      <div class="pillar" id="pillar2" style="display: none">
+        <h2>Pillar 2: Security        </h2>
+        <div class="question" id="pillar2_q1">
+          <h3>How do you secure account root user and properties?</h3>
+          <button onclick="showOptions('pillar2_q1')">Choose One</button>
+          <select
+            name="pillar2_q1"
+            id="pillar2_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q1','2',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">only root user</option>
+            <option value="1">Unprotected Root User</option>
+            <option value="2">Strong Password Policy</option>
+            <option value="3">MFA for Root User</option>
+            <option value="4">Locking Away Root User Credentials</option>
+            <option value="5">Limited Usage and Role-Based Access</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar2_q2">
+          <h3>How do you evaluate and implement new security services and features regularly?</h3>
+          <button onclick="showOptions('pillar2_q2')">Choose One</button>
+          <select
+            name="pillar2_q2"
+            id="pillar2_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q2','2',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No Regular Evaluation</option>
+            <option value="1">Reactive Adoption</option>
+            <option value="2">Occasional Manual Evaluation</option>
+            <option value="3">Quarterly Security Reviews</option>
+            <option value="4">Continuous Monitoring and Evaluation</option>
+            <option value="5">DevSecOps and Continuous Improvement</option>
+          </select>
+        </div>
+        <div class="question" id="pillar2_q3">
+          <h3>How do you automate testing and validation of security controls in pipelines?</h3>
+          <button onclick="showOptions('pillar2_q3')">Choose One</button>
+          <select
+            name="pillar2_q3"
+            id="pillar2_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q3','2',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No security</option>
+            <option value="1">Manual Testing</option>
+            <option value="2">Scripted Testing</option>
+            <option value="3">Automated Scanning</option>
+            <option value="4">Continuous Security Validation</option>
+            <option value="5">DevSecOps and Security as Code</option>
+          </select>
+        </div>
+        <div class="question" id="pillar2_q4">
+          <h3>How do you grant least privilege access?</h3>
+          <button onclick="showOptions('pillar2_q4')">Choose One</button>
+          <select
+            name="pillar2_q4"
+            id="pillar2_q4_select"
+            style="display: none"style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q4','2',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No least privileges</option>
+            <option value="1">Unrestricted Access</option>
+            <option value="2">Role-Based Access</option>
+            <option value="3">Group-Based Access</option>
+            <option value="4">Attribute-Based Access Control (ABAC)</option>
+            <option value="5">Policy-Based and Dynamic Access Control</option>
+          </select>
+        </div>
+        <div class="question" id="pillar2_q5">
+          <h3>Question 5</h3>
+          <button onclick="showOptions('pillar2_q5')">Choose One</button>
+          <select
+            name="pillar2_q5"
+            id="pillar2_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q5','2',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">No Clear Security Measures</option>
+            <option value="2">Basic Access Control</option>
+            <option value="3">Role-Based Access Control (RBAC)</option>
+            <option value="4">Strong Authentication and Authorization</option>
+            <option value="5">Zero Trust Architecture</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillSustainabilityar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar2_indicator" style="font-size: 25px;font-weight: 700;">0</span><span style="font-size: 25px;font-weight: 700;">/5</span>
+        </div>
+      </div>
+
+
+
+      <!--Pillar 3 -->
+      <div class="pillar" id="pillar3" style="display: none">
+        <h2>Pillar 3: Sustainability        </h2>
+        <div class="question" id="pillar3_q1">
+          <h3>How do you choose Region based on both business requirements and sustainability goals?</h3>
+          <button onclick="showOptions('pillar3_q1')">Choose One</button>
+          <select
+            name="pillar3_q1"
+            id="pillar3_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar3_indicator', 'pillar3_q1','3',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Nearest Region</option>
+            <option value="2">Cost and Latency</option>
+            <option value="3">Cost-Benefit Analysis</option>
+            <option value="4">Cloud Provider Tools</option>
+            <option value="5">Comprehensive Strategy</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar3_q2">
+          <h3>How do you scale workload infrastructure dynamically?</h3>
+          <button onclick="showOptions('pillar3_q2')">Choose One</button>
+          <select
+            name="pillar3_q2"
+            id="pillar3_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar3_indicator', 'pillar3_q2','3',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Manual Scaling</option>
+            <option value="2">Scheduled Scaling</option>
+            <option value="3">Reactive Auto-Scaling</option>
+            <option value="4">Predictive Auto-Scaling</option>
+            <option value="5">Event-Driven Auto-Scaling</option>
+          </select>
+        </div>
+        <div class="question" id="pillar3_q3">
+          <h3>How do you optimize team member resources for activities performed?</h3>
+          <button onclick="showOptions('pillar3_q3')">Choose One</button>
+          <select
+            name="pillar3_q3"
+            id="pillar3_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar3_indicator', 'pillar3_q3','3',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Ad Hoc Assignments</option>
+            <option value="2">Resource Tracking</option>
+            <option value="3">Resource Management Tools</option>
+            <option value="4">Resource Optimization and Sustainability Consideration</option>
+            <option value="5">Sustainable DevOps Culture</option>
+          </select>
+        </div>
+        <div class="question" id="pillar3_q4">
+          <h3>How do you optimize software and architecture for asynchronous and scheduled jobs?</h3>
+          <button onclick="showOptions('pillar3_q4')">Choose One</button>
+          <select
+            name="pillar3_q4"
+            id="pillar3_q4_select"
+            style="display: none"style="display: none"
+            onchange="enableNextButton('pillar3_indicator', 'pillar3_q4','3',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Ad Hoc Execution</option>
+            <option value="2">Basic Scheduling</option>
+            <option value="3">Queue-Based System</option>
+            <option value="4">Task Orchestration and Prioritization</option>
+            <option value="5">Event-Driven Microservices</option>
+          </select>
+        </div>
+        <div class="question" id="pillar3_q5">
+          <h3>How do you optimize impact on devices and equipment?</h3>
+          <button onclick="showOptions('pillar3_q5')">Choose One</button>
+          <select
+            name="pillar3_q5"
+            id="pillar3_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar3_indicator', 'pillar3_q5','3',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">No Optimization</option>
+            <option value="2">Basic Awareness</option>
+            <option value="3">Resource Monitoring and Reporting</option>
+            <option value="4">Resource Efficiency Strategies</option>
+            <option value="5">Sustainable Infrastructure Practices</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar3_indicator" style="font-size: 25px;font-weight: 700;">0</span><span style="font-size: 25px;font-weight: 700;">/5</span>
+        </div>
+      </div>
+
+
+      <!-- pillar 4 -->
+      <div class="pillar" id="pillar4" style="display: none">
+        <h2>Pillar 4 : Cost Optmization        </h2>
+        <div class="question" id="pillar4_q1">
+          <h3>How do you implement cloud financial management?</h3>
+          <button onclick="showOptions('pillar4_q1')">Choose One</button>
+          <select
+            name="pillar4_q1"
+            id="pillar4_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar4_indicator', 'pillar4_q1','4',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Reactive Monitoring (Cost Tracking)</option>
+            <option value="2">Basic Cost Allocation and Budgeting</option>
+            <option value="3">Automation and Optimization</option>
+            <option value="4">Continuous Optimization</option>
+            <option value="5">FinOps and Cloud Governance</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar4_q2">
+          <h3>Could you explain how you establish and manage cloud budgets and forecasts for your architecture's cloud resources?</h3>
+          <button onclick="showOptions('pillar4_q2')">Choose One</button>
+          <select
+            name="pillar4_q2"
+            id="pillar4_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar4_indicator', 'pillar4_q2','4',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Minimal Budgeting</option>
+            <option value="2">Basic Budgeting</option>
+            <option value="3">Moderate Budgeting</option>
+            <option value="4">Advanced Budgeting</option>
+            <option value="5">Best Practice Budgeting</option>
+          </select>
+        </div>
+        <div class="question" id="pillar4_q3">
+          <h3>What proactive measures do you take to monitor and control costs in your cloud infrastructure or services?</h3>
+          <button onclick="showOptions('pillar4_q3')">Choose One</button>
+          <select
+            name="pillar4_q3"
+            id="pillar4_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar4_indicator', 'pillar4_q3','4',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Manual Cost Tracking</option>
+            <option value="2">Basic Cost Alerts</option>
+            <option value="3">Resource Tagging</option>
+            <option value="4">Automation and Policy-Based Controls</option>
+            <option value="5">Cost Optimization Framework</option>
+          </select>
+        </div>
+        <div class="question" id="pillar4_q4">
+          <h3>Can you quantify and measure the business value gained from your cost optimization initiatives?</h3>
+          <button onclick="showOptions('pillar4_q4')">Choose One</button>
+          <select
+            name="pillar4_q4"
+            id="pillar4_q4_select"
+            style="display: none"style="display: none"
+            onchange="enableNextButton('pillar4_indicator', 'pillar4_q4','4',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Ad Hoc Tracking</option>
+            <option value="2">Basic Cost Metrics</option>
+            <option value="3">Cost Attribution</option>
+            <option value="4">ROI Calculation</option>
+            <option value="5">Continuous Improvement & Forecasting</option>
+          </select>
+        </div>
+        <div class="question" id="pillar4_q5">
+          <h3>Do you implement specific goals and targets for your application, and if so, how are they established and tracked?</h3>
+          <button onclick="showOptions('pillar4_q5')">Choose One</button>
+          <select
+            name="pillar4_q5"
+            id="pillar4_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar4_indicator', 'pillar4_q5','4',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">No formalized goals or tracking</option>
+            <option value="2">High-level non-specific objectives</option>
+            <option value="3">Specific measurable and time-bound goals</option>
+            <option value="4">Monitoring KPIs and regular reporting</option>
+            <option value="5">Real-time monitoring and automation for goals</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar4_indicator" style="font-size: 25px;font-weight: 700;">0</span><span style="font-size: 25px;font-weight: 700;">/5</span>
+        </div>
+      </div>
+
+      <!-- pillar 5 -->
+      <div class="pillar" id="pillar5" style="display: none">
+        <h2>Pillar 5 : Realiability        </h2>
+        <div class="question" id="pillar5_q1">
+          <h3>How do you design your architecture to accommodate fixed service quotas and constraints effectively?</h3>
+          <button onclick="showOptions('pillar5_q1')">Choose One</button>
+          <select
+            name="pillar5_q1"
+            id="pillar5_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar5_indicator', 'pillar5_q1','5',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Basic Monitoring</option>
+            <option value="2">Quota Awareness</option>
+            <option value="3">Resource Management</option>
+            <option value="4">Quota Prediction and Optimization</option>
+            <option value="5">Quota Governance and Automation</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar5_q2">
+          <h3>What tools or processes do you use to monitor and actively manage service quotas to prevent resource constraints?</h3>
+          <button onclick="showOptions('pillar5_q2')">Choose One</button>
+          <select
+            name="pillar5_q2"
+            id="pillar5_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar5_indicator', 'pillar5_q2','5',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Manual Monitoring</option>
+            <option value="2">Basic Threshold Alarms</option>
+            <option value="3">Quota Tracking and Notifications</option>
+            <option value="4">Auto-scaling and Dynamic Quota Adjustment</option>
+            <option value="5">Policy-Driven Quota Management</option>
+          </select>
+        </div>
+        <div class="question" id="pillar5_q3">
+          <h3>How do you plan your network topology?</h3>
+          <button onclick="showOptions('pillar5_q3')">Choose One</button>
+          <select
+            name="pillar5_q3"
+            id="pillar5_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar5_indicator', 'pillar5_q3','5',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">No formal planning</option>
+            <option value="2">Basic Diagrams</option>
+            <option value="3">Reactive Planning</option>
+            <option value="4">Proactive Planning</option>
+            <option value="5">Continuous Improvement and Automation</option>
+          </select>
+        </div>
+        <div class="question" id="pillar5_q4">
+          <h3>Could you describe the process of provisioning redundant connectivity between private networks in your cloud environment and on-premises infrastructure?</h3>
+          <button onclick="showOptions('pillar5_q4')">Choose One</button>
+          <select
+            name="pillar5_q4"
+            id="pillar5_q4_select"
+            style="display: none"style="display: none"
+            onchange="enableNextButton('pillar5_indicator', 'pillar5_q4','5',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Single network connection with no redundancy</option>
+            <option value="2">Basic Redundancy</option>
+            <option value="3">Improved Redundancy</option>
+            <option value="4">High Availability</option>
+            <option value="5">Fully automated highly redundant and resilient network</option>
+          </select>
+        </div>
+        <div class="question" id="pillar5_q5">
+          <h3>How do you design your workload service architecture?</h3>
+          <button onclick="showOptions('pillar5_q5')">Choose One</button>
+          <select
+            name="pillar5_q5"
+            id="pillar5_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar5_indicator', 'pillar5_q5','5',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Retrieving data. Wait a few seconds and try to cut or copy again.</option>
+            <option value="2">Basic Microservices</option>
+            <option value="3">Containerization and Orchestration</option>
+            <option value="4">Serverless or Function as a Service (FaaS)</option>
+            <option value="5">Event-Driven Scalable and Resilient Microservices</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar5_indicator" style="font-size: 25px;font-weight: 700;">0</span><span style="font-size: 25px;font-weight: 700;">/5</span>
+        </div>
+      </div>
+
+      <!-- pillar 6 -->
+      <div class="pillar" id="pillar6" style="display: none">
+        <h2>Pillar 6 : Performance Efficiency</h2>
+        <div class="question" id="pillar6_q1">
+          <h3>How do you select the best-performing architecture?</h3>
+          <button onclick="showOptions('pillar6_q1')">Choose One</button>
+          <select
+            name="pillar6_q1"
+            id="pillar6_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar6_indicator', 'pillar6_q1','6',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Ad Hoc Decision</option>
+            <option value="2">Reactive Decision</option>
+            <option value="3">Data-Driven Decision</option>
+            <option value="4">Predictive Optimization</option>
+            <option value="5">Continuous Improvement and Optimization</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar6_q2">
+          <h3>How can you factor cost requirements into decisions?</h3>
+          <button onclick="showOptions('pillar6_q2')">Choose One</button>
+          <select
+            name="pillar6_q2"
+            id="pillar6_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar6_indicator', 'pillar6_q2','6',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">No Consideration of Cost</option>
+            <option value="2">Afterthought Cost Assessment</option>
+            <option value="3">Early Cost Consideration</option>
+            <option value="4">Integrated Cost Management</option>
+            <option value="5">Automated Cost Optimization</option>
+          </select>
+        </div>
+        <div class="question" id="pillar6_q3">
+          <h3>How do you Evaluate the available compute options?</h3>
+          <button onclick="showOptions('pillar6_q3')">Choose One</button>
+          <select
+            name="pillar6_q3"
+            id="pillar6_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar6_indicator', 'pillar6_q3','6',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Basic Understanding</option>
+            <option value="2">Awareness of Containers</option>
+            <option value="3">Practical VM and Container Usage</option>
+            <option value="4">Multi-Cloud and Serverless Exploration</option>
+            <option value="5">Workload-Centric Optimization</option>
+          </select>
+        </div>
+        <div class="question" id="pillar6_q4">
+          <h3>How do you continually evaluate compute needs based on metrics?</h3>
+          <button onclick="showOptions('pillar6_q4')">Choose One</button>
+          <select
+            name="pillar6_q4"
+            id="pillar6_q4_select"
+            style="display: none"style="display: none"
+            onchange="enableNextButton('pillar6_indicator', 'pillar6_q4','6',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Reactive Evaluation</option>
+            <option value="2">Scheduled Evaluation</option>
+            <option value="3">Metric-Driven Scaling</option>
+            <option value="4">Predictive Analytics</option>
+            <option value="5">Continuous Optimization</option>
+          </select>
+        </div>
+        <div class="question" id="pillar6_q5">
+          <h3>How do you make decisions based on access patterns and metrics?</h3>
+          <button onclick="showOptions('pillar6_q5')">Choose One</button>
+          <select
+            name="pillar6_q5"
+            id="pillar6_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar6_indicator', 'pillar6_q5','6',value)"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">No</option>
+            <option value="1">Reactive Decision-making</option>
+            <option value="2">Basic Monitoring</option>
+            <option value="3">Data-Driven Decision-making</option>
+            <option value="4">Automation and Optimization</option>
+            <option value="5">Predictive and Proactive Optimization</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar6_indicator" style="font-size: 25px;font-weight: 700;">0</span><span style="font-size: 25px;font-weight: 700;">/5</span>
+        </div>
+      </div>
+
+      <button onclick="showNextPillar()" id="nextButton" disabled>
+        Next Pillar
+      </button>
+      <button
+        onclick="calculatePoints()"
+        id="calculateButton"
+        style="display: none"
+      >
+        Calculate Points
+      </button>
+    </div>
+
+    <script>
+      let currentPillar = 1;
+      var previousSelectedValues = {};
+      let questionCounters = [0, 0, 0, 0, 0, 0]; // Initialize counters for each pillar
+      const calculateButton = document.getElementById("calculateButton");
+      const nextButton = document.getElementById("nextButton");
+
+      function showNextPillar() {
+        document.getElementById(`pillar${currentPillar}`).style.display =
+          "none";
+        if (currentPillar <= 5) {
+          currentPillar++;
+        }
+        const nextPillar = document.getElementById(`pillar${currentPillar}`);
+
+        if (nextPillar) {
+          nextPillar.style.display = "block";
+        }
+
+        // Toggle the visibility of buttons based on the current pillar
+        if (currentPillar === 6) {
+          nextButton.style.display = "none";
+          calculateButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          calculateButton.style.display = "none";
+        }
+
+        // Disable next button until an option is selected
+        nextButton.disabled = true;
+      }
+
+      // Show Pillar 1 initially
+      document.getElementById("pillar1").style.display = "block";
+
+      function showOptions(questionId) {
+        const button = document.querySelector(`#${questionId} button`);
+        const select = document.querySelector(`#${questionId}_select`);
+
+        if (button && select) {
+          button.style.display = "none";
+          select.style.display = "inline-block";
+        }
+      }
+
+      function enableNextButton(indicatorId, questionId, index,value) {
+        nextButton.disabled = false;
+
+        
+        const questionIndicator = document.getElementById(indicatorId);
+
+        const currentCount = parseInt(questionIndicator.textContent);
+        const questionIndicator1 = document.getElementById(
+          `questionIndicator${index}`
+        );
+        if(value==="choose"){
+          previousSelectedValues="";
+          questionIndicator.textContent = (currentCount - 1).toString();
+            questionIndicator1.textContent = (currentCount - 1).toString();
+            
+            return false;
+          
+        }
+     if (previousSelectedValues !== questionId ) {
+          if (!isNaN(currentCount) && currentCount < 5) {
+            questionIndicator.textContent = (currentCount + 1).toString();
+            questionIndicator1.textContent = (currentCount + 1).toString();
+          }
+        }
+        previousSelectedValues = questionId;
+       
+        // // Increment the global counter for the specific pillar
+        //  questionCounters[pillarIndex - 1] += 1;
+      }
+
+      function jumpToPillar(pillarNumber) {
+        // Hide all pillars
+        for (let i = 1; i <= 6; i++) {
+          document.getElementById(`pillar${i}`).style.display = "none";
+        }
+
+        // Show the selected pillar
+        currentPillar = pillarNumber;
+        const selectedPillar = document.getElementById(
+          `pillar${currentPillar}`
+        );
+        if (selectedPillar) {
+          selectedPillar.style.display = "block";
+        }
+
+        // Toggle the visibility of buttons based on the current pillar
+        if (currentPillar === 6) {
+          nextButton.style.display = "none";
+          calculateButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          calculateButton.style.display = "none";
+        }
+
+        // Disable next button until an option is selected
+        nextButton.disabled = true;
+      }
+
+      function calculatePoints() {
+        let totalPoints = 0;
+
+        for (let pillarIndex = 1; pillarIndex <= 6; pillarIndex++) {
+          for (let questionIndex = 1; questionIndex <= 5; questionIndex++) {
+            const questionName = `pillar${pillarIndex}_q${questionIndex}`;
+            const selectedOption = document.querySelector(
+              `select[name="${questionName}"]`
+            );
+
+            if (selectedOption && selectedOption.value !== "choose") {
+              totalPoints += parseInt(selectedOption.value);
+            }
+          }
+        }
+
+        alert(`Total Points: ${totalPoints}`);
+      }
+    </script>
+  </body>
+</html>

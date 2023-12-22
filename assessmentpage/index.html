@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Page</title>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f0f5ff;
+        /* Light blue background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        /* Set flex direction to column to align items vertically */
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100vh;
+      }
+
+      #quizContainer {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 400px;
+        text-align: center;
+        /* Add margin to separate the quiz container from the pillar navigation */
+        margin-left: 20px;
+      }
+
+      .pillar-container {
+        /* Add styling to the container for side navigation */
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      .pillar {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        /* Set cursor to pointer for a clickable appearance */
+        cursor: pointer;
+        /* Add hover effect to highlight on hover */
+        transition: background-color 0.3s;
+      }
+
+      .pillar:hover {
+        background-color: #d0d0d0;
+      }
+
+      .question {
+        margin-bottom: 20px;
+      }
+
+      button {
+        background-color: #007bff;
+        /* Blue button color */
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      select {
+        padding: 10px;
+        font-size: 16px;
+      }
+
+      button:disabled {
+        background-color: #c0c0c0;
+        /* Disable button color */
+        cursor: not-allowed;
+      }
+      .question-indicator {
+        font-weight: bold;
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="pillar-container">
+      <div class="pillar" onclick="jumpToPillar(1)">
+        Pillar 1<span class="question-indicator" id="questionIndicator1"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(2)">
+        Pillar 2<span class="question-indicator" id="questionIndicator2"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(3)">
+        Pillar 3<span class="question-indicator" id="questionIndicator3"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(4)">
+        Pillar 4<span class="question-indicator" id="questionIndicator4"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(5)">
+        Pillar 5<span class="question-indicator" id="questionIndicator5"
+          >0</span
+        >
+      </div>
+
+      <div class="pillar" onclick="jumpToPillar(6)">
+        Pillar 6<span class="question-indicator" id="questionIndicator6"
+          >0</span
+        >
+      </div>
+      <!-- Repeat for other pillars -->
+    </div>
+
+    <!-- Pillar container for side navigation -->
+    <!-- <div class="pillar-container">
+ <div class="pillar" onclick="jumpToPillar(1)">Pillar 1</div>
+ <div class="pillar" onclick="jumpToPillar(2)">Pillar 2</div>
+ <div class="pillar" onclick="jumpToPillar(3)">Pillar 3</div>
+ <div class="pillar" onclick="jumpToPillar(4)">Pillar 4</div>
+ <div class="pillar" onclick="jumpToPillar(5)">Pillar 5</div>
+ <div class="pillar" onclick="jumpToPillar(6)">Pillar 6</div>
+ </div> -->
+
+    <!-- Quiz container -->
+    <div id="quizContainer">
+      <!-- Pillar 1 -->
+      <div class="pillar" id="pillar1">
+        <h2>Pillar 1</h2>
+        <div class="question" id="pillar1_q1">
+          <h3>Question 1</h3>
+          <button onclick="showOptions('pillar1_q1')">Choose One</button>
+          <select
+            name="pillar1_q1"
+            id="pillar1_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q1','1')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+
+        <div class="question" id="pillar1_q2">
+          <h3>Question 2</h3>
+          <button onclick="showOptions('pillar1_q2')">Choose One</button>
+          <select
+            name="pillar1_q2"
+            id="pillar1_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q2','1')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <div class="question" id="pillar1_q3">
+          <h3>Question 3</h3>
+          <button onclick="showOptions('pillar1_q3')">Choose One</button>
+          <select
+            name="pillar1_q3"
+            id="pillar1_q3_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q3','1')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <div class="question" id="pillar1_q4">
+          <h3>Question 4</h3>
+          <button onclick="showOptions('pillar1_q4')">Choose One</button>
+          <select
+            name="pillar1_q4"
+            id="pillar1_q4_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q4','1')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <div class="question" id="pillar1_q5">
+          <h3>Question 5</h3>
+          <button onclick="showOptions('pillar1_q5')">Choose One</button>
+          <select
+            name="pillar1_q5"
+            id="pillar1_q5_select"
+            style="display: none"
+            onchange="enableNextButton('pillar1_indicator', 'pillar1_q5','1')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 1 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 1 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar1_indicator">0</span>/5
+        </div>
+      </div>
+
+      <!-- Pillar 2 -->
+      <div class="pillar" id="pillar2" style="display: none">
+        <h2>Pillar 2</h2>
+        <div class="question" id="pillar2_q1">
+          <h3>Question 1</h3>
+          <button onclick="showOptions('pillar2_q1')">Choose One</button>
+          <select
+            name="pillar2_q1"
+            id="pillar2_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q1','2')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <div class="question" id="pillar2_q2">
+          <h3>Question 2</h3>
+          <button onclick="showOptions('pillar2_q2')">Choose One</button>
+          <select
+            name="pillar2_q2"
+            id="pillar2_q2_select"
+            style="display: none"
+            onchange="enableNextButton('pillar2_indicator', 'pillar2_q2','2')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+
+        <!-- Add more questions for Pillar 2 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 2 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator" id="pillar2_indicator">0/5</div>
+      </div>
+
+      <!-- Add Pillar 3 to Pillar 6 in a similar way -->
+      <div class="pillar" id="pillar3" style="display: none">
+        <h2>Pillar 3</h2>
+        <div class="question" id="pillar3_q1">
+          <h3>Question 1</h3>
+          <button onclick="showOptions('pillar3_q1')">Choose One</button>
+          <select
+            name="pillar3_q1"
+            id="pillar3_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar3_indicator')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <!-- Add more questions for Pillar 3 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 3 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator" id="pillar3_indicator">0/5</div>
+      </div>
+
+      <!-- pillar 4 -->
+      <div class="pillar" id="pillar4" style="display: none">
+        <h2>Pillar 4</h2>
+        <div class="question" id="pillar4_q1">
+          <h3>Question 1</h3>
+          <button onclick="showOptions('pillar4_q1')">Choose One</button>
+          <select
+            name="pillar4_q1"
+            id="pillar4_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar4_indicator')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <!-- Add more questions for Pillar 4 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 4 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator">
+          <span id="pillar4_indicator">0</span>/5
+        </div>
+      </div>
+
+      <!-- pillar 5 -->
+      <div class="pillar" id="pillar5" style="display: none">
+        <h2>Pillar 5</h2>
+        <div class="question" id="pillar5_q1">
+          <h3>Question 1</h3>
+          <button onclick="showOptions('pillar5_q1')">Choose One</button>
+          <select
+            name="pillar5_q1"
+            id="pillar5_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar5_indicator')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <!-- Add more questions for Pillar 5 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 5 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator" id="pillar5_indicator">0/5</div>
+      </div>
+
+      <!-- pillar 6 -->
+      <div class="pillar" id="pillar6" style="display: none">
+        <h2>Pillar 6</h2>
+        <div class="question" id="pillar6_q1">
+          <h3>Question 1</h3>
+          <button onclick="showOptions('pillar6_q1')">Choose One</button>
+          <select
+            name="pillar6_q1"
+            id="pillar6_q1_select"
+            style="display: none"
+            onchange="enableNextButton('pillar6_indicator')"
+          >
+            <option value="choose">Choose an option</option>
+            <option value="0">Option 0</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+        </div>
+        <!-- Add more questions for Pillar 6 -->
+        <!-- Repeat this structure for Questions 2 to 5 in Pillar 6 -->
+        <!-- Add pillar indicator -->
+        <div class="pillar-indicator" id="pillar6_indicator">0/5</div>
+      </div>
+
+      <button onclick="showNextPillar()" id="nextButton" disabled>
+        Next Pillar
+      </button>
+      <button
+        onclick="calculatePoints()"
+        id="calculateButton"
+        style="display: none"
+      >
+        Calculate Points
+      </button>
+    </div>
+
+    <script>
+      let currentPillar = 1;
+      var previousSelectedValues = {};
+      let questionCounters = [0, 0, 0, 0, 0, 0]; // Initialize counters for each pillar
+      const calculateButton = document.getElementById("calculateButton");
+      const nextButton = document.getElementById("nextButton");
+
+      function showNextPillar() {
+        document.getElementById(`pillar${currentPillar}`).style.display =
+          "none";
+        if (currentPillar <= 5) {
+          currentPillar++;
+        }
+        const nextPillar = document.getElementById(`pillar${currentPillar}`);
+
+        if (nextPillar) {
+          nextPillar.style.display = "block";
+        }
+
+        // Toggle the visibility of buttons based on the current pillar
+        if (currentPillar === 6) {
+          nextButton.style.display = "none";
+          calculateButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          calculateButton.style.display = "none";
+        }
+
+        // Disable next button until an option is selected
+        nextButton.disabled = true;
+      }
+
+      // Show Pillar 1 initially
+      document.getElementById("pillar1").style.display = "block";
+
+      function showOptions(questionId) {
+        const button = document.querySelector(`#${questionId} button`);
+        const select = document.querySelector(`#${questionId}_select`);
+
+        if (button && select) {
+          button.style.display = "none";
+          select.style.display = "inline-block";
+        }
+      }
+
+      function enableNextButton(indicatorId, questionId, index) {
+        nextButton.disabled = false;
+
+        const questionIndicator = document.getElementById(indicatorId);
+
+        const currentCount = parseInt(questionIndicator.textContent);
+        const questionIndicator1 = document.getElementById(
+          `questionIndicator${index}`
+        );
+
+        if (previousSelectedValues !== questionId) {
+          if (!isNaN(currentCount) && currentCount < 5) {
+            questionIndicator.textContent = (currentCount + 1).toString();
+            questionIndicator1.textContent = (currentCount + 1).toString();
+          }
+        }
+        previousSelectedValues = questionId;
+        // // Increment the global counter for the specific pillar
+        //  questionCounters[pillarIndex - 1] += 1;
+      }
+
+      function jumpToPillar(pillarNumber) {
+        // Hide all pillars
+        for (let i = 1; i <= 6; i++) {
+          document.getElementById(`pillar${i}`).style.display = "none";
+        }
+
+        // Show the selected pillar
+        currentPillar = pillarNumber;
+        const selectedPillar = document.getElementById(
+          `pillar${currentPillar}`
+        );
+        if (selectedPillar) {
+          selectedPillar.style.display = "block";
+        }
+
+        // Toggle the visibility of buttons based on the current pillar
+        if (currentPillar === 6) {
+          nextButton.style.display = "none";
+          calculateButton.style.display = "inline-block";
+        } else {
+          nextButton.style.display = "inline-block";
+          calculateButton.style.display = "none";
+        }
+
+        // Disable next button until an option is selected
+        nextButton.disabled = true;
+      }
+
+      function calculatePoints() {
+        let totalPoints = 0;
+
+        for (let pillarIndex = 1; pillarIndex <= 6; pillarIndex++) {
+          for (let questionIndex = 1; questionIndex <= 5; questionIndex++) {
+            const questionName = `pillar${pillarIndex}_q${questionIndex}`;
+            const selectedOption = document.querySelector(
+              `select[name="${questionName}"]`
+            );
+
+            if (selectedOption && selectedOption.value !== "choose") {
+              totalPoints += parseInt(selectedOption.value);
+            }
+          }
+        }
+
+        alert(`Total Points: ${totalPoints}`);
+      }
+    </script>
+  </body>
+</html>
