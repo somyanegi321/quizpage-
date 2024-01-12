@@ -100,44 +100,44 @@
   <body>
     <div class="pillar-container">
       <div class="pillar" onclick="jumpToPillar(1)">
-        Operational Exellence <span class="question-indicator" id="questionIndicator1"
+        Business & Technical Strategy<span class="question-indicator" id="questionIndicator1"
           >0</span
         >
       </div>
 
       <div class="pillar" onclick="jumpToPillar(2)">
-        Security<span class="question-indicator" id="questionIndicator2"
+        Cloud Migration Strategy<span class="question-indicator" id="questionIndicator2"
           >0</span
         >
       </div>
 
       <div class="pillar" onclick="jumpToPillar(3)">
-        Sustainability<span class="question-indicator" id="questionIndicator3"
+        Security & Compliance<span class="question-indicator" id="questionIndicator3"
           >0</span
         >
       </div>
 
       <div class="pillar" onclick="jumpToPillar(4)">
-        Cost Optmization<span class="question-indicator" id="questionIndicator4"
+        Performance & Optimisation<span class="question-indicator" id="questionIndicator4"
           >0</span
         >
       </div>
 
       <div class="pillar" onclick="jumpToPillar(5)">
-        Realiability<span class="question-indicator" id="questionIndicator5"
+        Cost Analysis & Planning<span class="question-indicator" id="questionIndicator5"
           >0</span
         >
       </div>
 
       <div class="pillar" onclick="jumpToPillar(6)">
-        Performance Efficiency<span class="question-indicator" id="questionIndicator6"
+        Data & Application Assessment <span class="question-indicator" id="questionIndicator6"
           >0</span
         >
       </div>
       <!-- Repeat for other pillars -->
     </div>
 
-    <!-- Pillar container for side navigation -->
+    <!-- Pillar container for side navigation &-->
     <!-- <div class="pillar-container">
  <div class="pillar" onclick="jumpToPillar(1)">Pillar 1</div>
  <div class="pillar" onclick="jumpToPillar(2)">Pillar 2</div>
@@ -151,9 +151,9 @@
     <div id="quizContainer">
       <!-- Pillar 1 -->
       <div class="pillar" id="pillar1">
-        <h2>Pillar 1 : Operational Exellence</h2>
+        <h2>Business & Technical Strategy</h2>
         <div class="question" id="pillar1_q1">
-          <h3>How do you evaluate internal & external customer needs?</h3>
+          <h3>Have you defined clear business objectives for migrating to the cloud?</h3>
           <button onclick="showOptions('pillar1_q1')">Choose One</button>
           <select
             name="pillar1_q1"
@@ -162,17 +162,14 @@
             onchange="enableNextButton('pillar1_indicator', 'pillar1_q1','1',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Stakeholders meetings</option>
-            <option value="2">Workshops & documentation</option>
-            <option value="3">user-centered design</option>
-            <option value="4">SLOs & KPIs</option>
-            <option value="5">Value stream mapping & feedback loops.</option>
+            
           </select>
         </div>
 
         <div class="question" id="pillar1_q2">
-          <h3>How does your organizational culture support your business outcomes?</h3>
+          <h3>Are key stakeholders involved in the cloud migration decision-making process? </h3>
           <button onclick="showOptions('pillar1_q2')">Choose One</button>
           <select
             name="pillar1_q2"
@@ -181,16 +178,13 @@
             onchange="enableNextButton('pillar1_indicator', 'pillar1_q2','1',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Minimal Support</option>
-            <option value="2">Support Awareness</option>
-            <option value="3">Collaborative Culture</option>
-            <option value="4">Empowered Teams</option>
-            <option value="5">Continuous improvement Culture </option>
+            
           </select>
         </div>
         <div class="question" id="pillar1_q3">
-          <h3>Do Resources, Processes and procedures have identified owners?</h3>
+          <h3>Is your cloud migration strategy aligned with your overall business strategy? </h3>
           <button onclick="showOptions('pillar1_q3')">Choose One</button>
           <select
             name="pillar1_q3"
@@ -199,16 +193,13 @@
             onchange="enableNextButton('pillar1_indicator', 'pillar1_q3','1',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">ad hoc ownership</option>
-            <option value="2">Resource ownership</option>
-            <option value="3">ownership Registry & Accountability</option>
-            <option value="4">Business-value driven ownership</option>
-            <option value="5">Continuous improvement ownership</option>
+            
           </select>
         </div>
         <div class="question" id="pillar1_q4">
-          <h3>How do you design your workload so that you can understand its state?</h3>
+          <h3>Have you evaluated different cloud service providers based on features and reputation?  </h3>
           <button onclick="showOptions('pillar1_q4')">Choose One</button>
           <select
             name="pillar1_q4"
@@ -217,16 +208,13 @@
             onchange="enableNextButton('pillar1_indicator', 'pillar1_q4','1',value)"
           >
             <option value="choose">Choose an option</option>
-            <option value="0">No</option>
-            <option value="1">Limited Monitoring</option>
-            <option value="2">Basic Metrics and Logging</option>
-            <option value="3">Metrics, Logs, and Tracing</option>
-            <option value="4">Real-time Monitoring and Alerts</option>
-            <option value="5">AI/ML-Powered Observability</option>
+            <option value="0">Yes</option>
+            <option value="1">No</option>
+            
           </select>
         </div>
         <div class="question" id="pillar1_q5">
-          <h3>How do you reduce defects, ease remediation, and improve flow into production?</h3>
+          <h3>Have you defined a governance framework for cloud resource management and monitoring? </h3>
           <button onclick="showOptions('pillar1_q5')">Choose One</button>
           <select
             name="pillar1_q5"
@@ -235,12 +223,9 @@
             onchange="enableNextButton('pillar1_indicator', 'pillar1_q5','1',value)"
           >
             <option value="choose">Choose an option</option>
-            <option value="0">No</option>
-            <option value="1">Limited Quality Assurance</option>
-            <option value="2">Basic Quality Checks</option>
-            <option value="3">Continuous Integration</option>
-            <option value="4">Continuous Delivery</option>
-            <option value="5">Continuous Improvement and DevSecOps</option>
+            <option value="0">Yes</option>
+            <option value="1">No</option>
+            
           </select>
         </div>
 
@@ -256,9 +241,9 @@
 
       <!-- Pillar 2 -->
       <div class="pillar" id="pillar2" style="display: none">
-        <h2>Pillar 2: Security        </h2>
+        <h2>Cloud Migration Strategy </h2>
         <div class="question" id="pillar2_q1">
-          <h3>How do you secure account root user and properties?</h3>
+          <h3>Have you decided on the preferred cloud deployment model: public, private, hybrid, or multi-cloud?  </h3>
           <button onclick="showOptions('pillar2_q1')">Choose One</button>
           <select
             name="pillar2_q1"
@@ -267,17 +252,14 @@
             onchange="enableNextButton('pillar2_indicator', 'pillar2_q1','2',value)"
           >
             <option value="choose">Choose an option</option>
-            <option value="0">only root user</option>
-            <option value="1">Unprotected Root User</option>
-            <option value="2">Strong Password Policy</option>
-            <option value="3">MFA for Root User</option>
-            <option value="4">Locking Away Root User Credentials</option>
-            <option value="5">Limited Usage and Role-Based Access</option>
+            <option value="5">Yes</option>
+            <option value="0">No</option>
+            
           </select>
         </div>
 
         <div class="question" id="pillar2_q2">
-          <h3>How do you evaluate and implement new security services and features regularly?</h3>
+          <h3>Have you evaluated the suitability of different cloud service models: IaaS, PaaS, SaaS?  </h3>
           <button onclick="showOptions('pillar2_q2')">Choose One</button>
           <select
             name="pillar2_q2"
@@ -286,16 +268,13 @@
             onchange="enableNextButton('pillar2_indicator', 'pillar2_q2','2',value)"
           >
             <option value="choose">Choose an option</option>
-            <option value="0">No Regular Evaluation</option>
-            <option value="1">Reactive Adoption</option>
-            <option value="2">Occasional Manual Evaluation</option>
-            <option value="3">Quarterly Security Reviews</option>
-            <option value="4">Continuous Monitoring and Evaluation</option>
-            <option value="5">DevSecOps and Continuous Improvement</option>
+            <option value="5">Yes</option>
+            <option value="0">No</option>
+          
           </select>
         </div>
         <div class="question" id="pillar2_q3">
-          <h3>How do you automate testing and validation of security controls in pipelines?</h3>
+          <h3>Have you determined the migration approach: lift and shift, re-platform, re-factor, or rebuild? </h3>
           <button onclick="showOptions('pillar2_q3')">Choose One</button>
           <select
             name="pillar2_q3"
@@ -304,16 +283,12 @@
             onchange="enableNextButton('pillar2_indicator', 'pillar2_q3','2',value)"
           >
             <option value="choose">Choose an option</option>
-            <option value="0">No security</option>
-            <option value="1">Manual Testing</option>
-            <option value="2">Scripted Testing</option>
-            <option value="3">Automated Scanning</option>
-            <option value="4">Continuous Security Validation</option>
-            <option value="5">DevSecOps and Security as Code</option>
+            <option value="5">Yes</option>
+            <option value="0">No</option>
           </select>
         </div>
         <div class="question" id="pillar2_q4">
-          <h3>How do you grant least privilege access?</h3>
+          <h3>Have you developed a step-by-step migration plan with timelines and milestones? </h3>
           <button onclick="showOptions('pillar2_q4')">Choose One</button>
           <select
             name="pillar2_q4"
@@ -322,16 +297,13 @@
             onchange="enableNextButton('pillar2_indicator', 'pillar2_q4','2',value)"
           >
             <option value="choose">Choose an option</option>
-            <option value="0">No least privileges</option>
-            <option value="1">Unrestricted Access</option>
-            <option value="2">Role-Based Access</option>
-            <option value="3">Group-Based Access</option>
-            <option value="4">Attribute-Based Access Control (ABAC)</option>
-            <option value="5">Policy-Based and Dynamic Access Control</option>
+            <option value="5">Yes</option>
+            <option value="0">No</option>
+            
           </select>
         </div>
         <div class="question" id="pillar2_q5">
-          <h3>Question 5</h3>
+          <h3>Have you prioritized applications and data for migration based on business impact?</h3>
           <button onclick="showOptions('pillar2_q5')">Choose One</button>
           <select
             name="pillar2_q5"
@@ -340,12 +312,9 @@
             onchange="enableNextButton('pillar2_indicator', 'pillar2_q5','2',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">No Clear Security Measures</option>
-            <option value="2">Basic Access Control</option>
-            <option value="3">Role-Based Access Control (RBAC)</option>
-            <option value="4">Strong Authentication and Authorization</option>
-            <option value="5">Zero Trust Architecture</option>
+            
           </select>
         </div>
 
@@ -361,9 +330,9 @@
 
       <!--Pillar 3 -->
       <div class="pillar" id="pillar3" style="display: none">
-        <h2>Pillar 3: Sustainability        </h2>
+        <h2>Security & Compliance      </h2>
         <div class="question" id="pillar3_q1">
-          <h3>How do you choose Region based on both business requirements and sustainability goals?</h3>
+          <h3>Have you reviewed your current security policies and controls? </h3>
           <button onclick="showOptions('pillar3_q1')">Choose One</button>
           <select
             name="pillar3_q1"
@@ -372,17 +341,14 @@
             onchange="enableNextButton('pillar3_indicator', 'pillar3_q1','3',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Nearest Region</option>
-            <option value="2">Cost and Latency</option>
-            <option value="3">Cost-Benefit Analysis</option>
-            <option value="4">Cloud Provider Tools</option>
-            <option value="5">Comprehensive Strategy</option>
+            
           </select>
         </div>
 
         <div class="question" id="pillar3_q2">
-          <h3>How do you scale workload infrastructure dynamically?</h3>
+          <h3>Have you assessed compliance requirements and industry regulations? </h3>
           <button onclick="showOptions('pillar3_q2')">Choose One</button>
           <select
             name="pillar3_q2"
@@ -391,16 +357,13 @@
             onchange="enableNextButton('pillar3_indicator', 'pillar3_q2','3',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Manual Scaling</option>
-            <option value="2">Scheduled Scaling</option>
-            <option value="3">Reactive Auto-Scaling</option>
-            <option value="4">Predictive Auto-Scaling</option>
-            <option value="5">Event-Driven Auto-Scaling</option>
+            
           </select>
         </div>
         <div class="question" id="pillar3_q3">
-          <h3>How do you optimize team member resources for activities performed?</h3>
+          <h3>Have you planned a strategy to secure your cloud resources and data? </h3>
           <button onclick="showOptions('pillar3_q3')">Choose One</button>
           <select
             name="pillar3_q3"
@@ -409,16 +372,13 @@
             onchange="enableNextButton('pillar3_indicator', 'pillar3_q3','3',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Ad Hoc Assignments</option>
-            <option value="2">Resource Tracking</option>
-            <option value="3">Resource Management Tools</option>
-            <option value="4">Resource Optimization and Sustainability Consideration</option>
-            <option value="5">Sustainable DevOps Culture</option>
+            
           </select>
         </div>
         <div class="question" id="pillar3_q4">
-          <h3>How do you optimize software and architecture for asynchronous and scheduled jobs?</h3>
+          <h3>Have you assessed data privacy and compliance requirements (e.g., GDPR, HIPAA)? </h3>
           <button onclick="showOptions('pillar3_q4')">Choose One</button>
           <select
             name="pillar3_q4"
@@ -427,16 +387,13 @@
             onchange="enableNextButton('pillar3_indicator', 'pillar3_q4','3',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Ad Hoc Execution</option>
-            <option value="2">Basic Scheduling</option>
-            <option value="3">Queue-Based System</option>
-            <option value="4">Task Orchestration and Prioritization</option>
-            <option value="5">Event-Driven Microservices</option>
+            
           </select>
         </div>
         <div class="question" id="pillar3_q5">
-          <h3>How do you optimize impact on devices and equipment?</h3>
+          <h3>Have you defined policies and controls for data access, sharing, and encryption?  </h3>
           <button onclick="showOptions('pillar3_q5')">Choose One</button>
           <select
             name="pillar3_q5"
@@ -445,12 +402,8 @@
             onchange="enableNextButton('pillar3_indicator', 'pillar3_q5','3',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">No Optimization</option>
-            <option value="2">Basic Awareness</option>
-            <option value="3">Resource Monitoring and Reporting</option>
-            <option value="4">Resource Efficiency Strategies</option>
-            <option value="5">Sustainable Infrastructure Practices</option>
           </select>
         </div>
 
@@ -465,9 +418,9 @@
 
       <!-- pillar 4 -->
       <div class="pillar" id="pillar4" style="display: none">
-        <h2>Pillar 4 : Cost Optmization        </h2>
+        <h2>Performance & Optimisation       </h2>
         <div class="question" id="pillar4_q1">
-          <h3>How do you implement cloud financial management?</h3>
+          <h3>Have you evaluated your application performance requirements? </h3>
           <button onclick="showOptions('pillar4_q1')">Choose One</button>
           <select
             name="pillar4_q1"
@@ -476,17 +429,13 @@
             onchange="enableNextButton('pillar4_indicator', 'pillar4_q1','4',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Reactive Monitoring (Cost Tracking)</option>
-            <option value="2">Basic Cost Allocation and Budgeting</option>
-            <option value="3">Automation and Optimization</option>
-            <option value="4">Continuous Optimization</option>
-            <option value="5">FinOps and Cloud Governance</option>
           </select>
         </div>
 
         <div class="question" id="pillar4_q2">
-          <h3>Could you explain how you establish and manage cloud budgets and forecasts for your architecture's cloud resources?</h3>
+          <h3>Have you determined your scalability needs and if cloud services can meet them? </h3>
           <button onclick="showOptions('pillar4_q2')">Choose One</button>
           <select
             name="pillar4_q2"
@@ -495,16 +444,12 @@
             onchange="enableNextButton('pillar4_indicator', 'pillar4_q2','4',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Minimal Budgeting</option>
-            <option value="2">Basic Budgeting</option>
-            <option value="3">Moderate Budgeting</option>
-            <option value="4">Advanced Budgeting</option>
-            <option value="5">Best Practice Budgeting</option>
           </select>
         </div>
         <div class="question" id="pillar4_q3">
-          <h3>What proactive measures do you take to monitor and control costs in your cloud infrastructure or services?</h3>
+          <h3>Have you planned for load balancing, auto-scaling, and performance monitoring?</h3>
           <button onclick="showOptions('pillar4_q3')">Choose One</button>
           <select
             name="pillar4_q3"
@@ -513,16 +458,12 @@
             onchange="enableNextButton('pillar4_indicator', 'pillar4_q3','4',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Manual Cost Tracking</option>
-            <option value="2">Basic Cost Alerts</option>
-            <option value="3">Resource Tagging</option>
-            <option value="4">Automation and Policy-Based Controls</option>
-            <option value="5">Cost Optimization Framework</option>
           </select>
         </div>
         <div class="question" id="pillar4_q4">
-          <h3>Can you quantify and measure the business value gained from your cost optimization initiatives?</h3>
+          <h3>Have you established baseline performance metrics and alert thresholds? </h3>
           <button onclick="showOptions('pillar4_q4')">Choose One</button>
           <select
             name="pillar4_q4"
@@ -531,16 +472,12 @@
             onchange="enableNextButton('pillar4_indicator', 'pillar4_q4','4',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Ad Hoc Tracking</option>
-            <option value="2">Basic Cost Metrics</option>
-            <option value="3">Cost Attribution</option>
-            <option value="4">ROI Calculation</option>
-            <option value="5">Continuous Improvement & Forecasting</option>
           </select>
         </div>
         <div class="question" id="pillar4_q5">
-          <h3>Do you implement specific goals and targets for your application, and if so, how are they established and tracked?</h3>
+          <h3>Have you identified tools and methods for monitoring cloud resource performance?</h3>
           <button onclick="showOptions('pillar4_q5')">Choose One</button>
           <select
             name="pillar4_q5"
@@ -549,12 +486,8 @@
             onchange="enableNextButton('pillar4_indicator', 'pillar4_q5','4',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">No formalized goals or tracking</option>
-            <option value="2">High-level non-specific objectives</option>
-            <option value="3">Specific measurable and time-bound goals</option>
-            <option value="4">Monitoring KPIs and regular reporting</option>
-            <option value="5">Real-time monitoring and automation for goals</option>
           </select>
         </div>
 
@@ -568,9 +501,9 @@
 
       <!-- pillar 5 -->
       <div class="pillar" id="pillar5" style="display: none">
-        <h2>Pillar 5 : Realiability        </h2>
+        <h2>Cost Analysis & Planning        </h2>
         <div class="question" id="pillar5_q1">
-          <h3>How do you design your architecture to accommodate fixed service quotas and constraints effectively?</h3>
+          <h3>Have you estimated your current IT infrastructure costs? </h3>
           <button onclick="showOptions('pillar5_q1')">Choose One</button>
           <select
             name="pillar5_q1"
@@ -579,17 +512,14 @@
             onchange="enableNextButton('pillar5_indicator', 'pillar5_q1','5',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Basic Monitoring</option>
-            <option value="2">Quota Awareness</option>
-            <option value="3">Resource Management</option>
-            <option value="4">Quota Prediction and Optimization</option>
-            <option value="5">Quota Governance and Automation</option>
+            
           </select>
         </div>
 
         <div class="question" id="pillar5_q2">
-          <h3>What tools or processes do you use to monitor and actively manage service quotas to prevent resource constraints?</h3>
+          <h3>Have you compared costs between on-premises and cloud environments? </h3>
           <button onclick="showOptions('pillar5_q2')">Choose One</button>
           <select
             name="pillar5_q2"
@@ -598,16 +528,13 @@
             onchange="enableNextButton('pillar5_indicator', 'pillar5_q2','5',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Manual Monitoring</option>
-            <option value="2">Basic Threshold Alarms</option>
-            <option value="3">Quota Tracking and Notifications</option>
-            <option value="4">Auto-scaling and Dynamic Quota Adjustment</option>
-            <option value="5">Policy-Driven Quota Management</option>
+            
           </select>
         </div>
         <div class="question" id="pillar5_q3">
-          <h3>How do you plan your network topology?</h3>
+          <h3>Have you projected cloud migration costs, considering compute, storage, and data transfer? </h3>
           <button onclick="showOptions('pillar5_q3')">Choose One</button>
           <select
             name="pillar5_q3"
@@ -616,16 +543,12 @@
             onchange="enableNextButton('pillar5_indicator', 'pillar5_q3','5',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">No formal planning</option>
-            <option value="2">Basic Diagrams</option>
-            <option value="3">Reactive Planning</option>
-            <option value="4">Proactive Planning</option>
-            <option value="5">Continuous Improvement and Automation</option>
           </select>
         </div>
         <div class="question" id="pillar5_q4">
-          <h3>Could you describe the process of provisioning redundant connectivity between private networks in your cloud environment and on-premises infrastructure?</h3>
+          <h3>Have you considered the long-term cost implications of cloud services, including potential scalability and usage changes?</h3>
           <button onclick="showOptions('pillar5_q4')">Choose One</button>
           <select
             name="pillar5_q4"
@@ -634,16 +557,13 @@
             onchange="enableNextButton('pillar5_indicator', 'pillar5_q4','5',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Single network connection with no redundancy</option>
-            <option value="2">Basic Redundancy</option>
-            <option value="3">Improved Redundancy</option>
-            <option value="4">High Availability</option>
-            <option value="5">Fully automated highly redundant and resilient network</option>
+           
           </select>
         </div>
         <div class="question" id="pillar5_q5">
-          <h3>How do you design your workload service architecture?</h3>
+          <h3>Are you factoring in additional costs such as licensing fees, training, and support when transitioning to the cloud? </h3>
           <button onclick="showOptions('pillar5_q5')">Choose One</button>
           <select
             name="pillar5_q5"
@@ -652,12 +572,9 @@
             onchange="enableNextButton('pillar5_indicator', 'pillar5_q5','5',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Retrieving data. Wait a few seconds and try to cut or copy again.</option>
-            <option value="2">Basic Microservices</option>
-            <option value="3">Containerization and Orchestration</option>
-            <option value="4">Serverless or Function as a Service (FaaS)</option>
-            <option value="5">Event-Driven Scalable and Resilient Microservices</option>
+           
           </select>
         </div>
 
@@ -671,9 +588,9 @@
 
       <!-- pillar 6 -->
       <div class="pillar" id="pillar6" style="display: none">
-        <h2>Pillar 6 : Performance Efficiency</h2>
+        <h2>Data & Application Assessment</h2>
         <div class="question" id="pillar6_q1">
-          <h3>How do you select the best-performing architecture?</h3>
+          <h3>Have you identified all data sources, databases, and data storage solutions? </h3>
           <button onclick="showOptions('pillar6_q1')">Choose One</button>
           <select
             name="pillar6_q1"
@@ -682,17 +599,14 @@
             onchange="enableNextButton('pillar6_indicator', 'pillar6_q1','6',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Ad Hoc Decision</option>
-            <option value="2">Reactive Decision</option>
-            <option value="3">Data-Driven Decision</option>
-            <option value="4">Predictive Optimization</option>
-            <option value="5">Continuous Improvement and Optimization</option>
+            
           </select>
         </div>
 
         <div class="question" id="pillar6_q2">
-          <h3>How can you factor cost requirements into decisions?</h3>
+          <h3>Have you considered data security and compliance requirements?  </h3>
           <button onclick="showOptions('pillar6_q2')">Choose One</button>
           <select
             name="pillar6_q2"
@@ -701,16 +615,13 @@
             onchange="enableNextButton('pillar6_indicator', 'pillar6_q2','6',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">No Consideration of Cost</option>
-            <option value="2">Afterthought Cost Assessment</option>
-            <option value="3">Early Cost Consideration</option>
-            <option value="4">Integrated Cost Management</option>
-            <option value="5">Automated Cost Optimization</option>
+            
           </select>
         </div>
         <div class="question" id="pillar6_q3">
-          <h3>How do you Evaluate the available compute options?</h3>
+          <h3>Have you planned for data migration, including cleansing and transformation?  </h3>
           <button onclick="showOptions('pillar6_q3')">Choose One</button>
           <select
             name="pillar6_q3"
@@ -719,16 +630,12 @@
             onchange="enableNextButton('pillar6_indicator', 'pillar6_q3','6',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Basic Understanding</option>
-            <option value="2">Awareness of Containers</option>
-            <option value="3">Practical VM and Container Usage</option>
-            <option value="4">Multi-Cloud and Serverless Exploration</option>
-            <option value="5">Workload-Centric Optimization</option>
           </select>
         </div>
         <div class="question" id="pillar6_q4">
-          <h3>How do you continually evaluate compute needs based on metrics?</h3>
+          <h3>Have you identified all applications and their dependencies? </h3>
           <button onclick="showOptions('pillar6_q4')">Choose One</button>
           <select
             name="pillar6_q4"
@@ -737,16 +644,12 @@
             onchange="enableNextButton('pillar6_indicator', 'pillar6_q4','6',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Reactive Evaluation</option>
-            <option value="2">Scheduled Evaluation</option>
-            <option value="3">Metric-Driven Scaling</option>
-            <option value="4">Predictive Analytics</option>
-            <option value="5">Continuous Optimization</option>
           </select>
         </div>
         <div class="question" id="pillar6_q5">
-          <h3>How do you make decisions based on access patterns and metrics?</h3>
+          <h3>Have you categorized applications based on their importance and complexity? </h3>
           <button onclick="showOptions('pillar6_q5')">Choose One</button>
           <select
             name="pillar6_q5"
@@ -755,12 +658,8 @@
             onchange="enableNextButton('pillar6_indicator', 'pillar6_q5','6',value)"
           >
             <option value="choose">Choose an option</option>
+            <option value="5">Yes</option>
             <option value="0">No</option>
-            <option value="1">Reactive Decision-making</option>
-            <option value="2">Basic Monitoring</option>
-            <option value="3">Data-Driven Decision-making</option>
-            <option value="4">Automation and Optimization</option>
-            <option value="5">Predictive and Proactive Optimization</option>
           </select>
         </div>
 
